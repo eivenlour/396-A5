@@ -15,7 +15,7 @@ def main():
 
     # Check if game is not over
     while not nim.check_end_game():
-        input_string = input("Enter the number of stones you want to take and the pile number you want the stones taken from.\nNote that the pile numbering starts from 0.\n Example: 2 0 - means 2 stones will be taken from the first pile.")
+        input_string = input("Enter the number of stones you want to take and the pile number you want the stones taken from.\nNote that the pile numbering starts from 1.\n Example: 2 1 - means 2 stones will be taken from the first pile.")
         input_list = convert_input(input_string)
         # Check if input is valid
         while not input_is_valid(nim, input_list):
@@ -51,11 +51,11 @@ def input_is_valid(nim, input_list):
         return False
 
     # Check if the number of stones to take in the given pile is less than or equal to the current number of stones in the pile
-    if num_stones > current_state[pile_number]:
+    if num_stones > current_state[pile_number-1]:
         return False
     
     # Check if the pile number does not exceed the number of piles
-    if pile_number >= len(current_state):
+    if pile_number > len(current_state):
         return False    
     return True
 
