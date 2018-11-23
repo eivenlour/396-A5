@@ -13,18 +13,18 @@ def main():
     # Initialize Nim class
     nim = Nim(init_input_list)
 
-
     # Check if game is not over
     while not nim.check_end_game():
         input_string = input("Enter the number of stones you want to take and the pile number you want the stones taken from.\nNote that the pile numbering starts from 0.\n Example: 2 0 - means 2 stones will be taken from the first pile.")
         input_list = convert_input(input_string)
         # Check if input is valid
-        while not input_is_valid(input_list):
+        while not input_is_valid(nim, input_list):
             input_string = input("Invalid input. Try again.\n")
             input_list = convert_input(input_string)
             num_stones = input_list[0]
             pile_number = input_list[1]
         nim.update(num_stones, pile_number)
+
 
 def init_input_is_valid(init_input_list):
     for each_item in init_input_list:
@@ -36,7 +36,7 @@ def init_input_is_valid(init_input_list):
             return False
     return True
 
-def input_is_valid(input_list):
+def input_is_valid(nim, input_list):
     current_state = nim.return_state()
     num_stones = input_list[0]
     pile_number = input_list[1]
