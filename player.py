@@ -19,19 +19,13 @@ class Player():
           #j is the number of stones in pile 
           for j in self.P:
             #i is the number of stones taken out of the pile j 
-            for i in range(0, j):
+            for i in range(1, j+1):
               new_state = self.P
-              new_state[pile_index] = j - 1 
-              if self.xorsum(new_state) == True:
-                winning_moves.append([i, index + 1])
+              new_state[pile_index] = j - i
+              if self.xorsum(new_state) != 0:
+                winning_moves.append([i, pile_index])
             pile_index += 1 
           return winning_moves
 
 
 
-def main():
-    state = [1,2,2]
-    player = Player(state)
-    player.get_winning_moves()
-
-main()
