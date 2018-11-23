@@ -11,7 +11,7 @@ class Nim:
         print(' '.join(map(str,self.game)))
 
     def update(self, num_of_stones, pile):
-        self.game[pile] = self.game[pile] - num_of_stones
+        self.game[pile] = self.game[pile - 1] - num_of_stones
         self.print_game()
 
     def check_end_game(self):
