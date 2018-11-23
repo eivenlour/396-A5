@@ -8,7 +8,6 @@ class Nim:
         self.num_of_piles = len(list_of_stones)
 
     def print_game(self):
-
         print(' '.join(map(str,self.game)))
 
     def update(self, num_of_stones, pile):
@@ -21,3 +20,5 @@ class Nim:
     			return False 
     	return True 
 
+    def return_state(self):
+        return self.game
