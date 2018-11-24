@@ -41,7 +41,6 @@ def main():
             if nim.check_end_game():
                 print("YOU LOSE!")
                 break
-        
 
 def init_input_is_valid(init_input_string):
     init_input_list = convert_input(init_input_string)
