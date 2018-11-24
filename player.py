@@ -14,13 +14,21 @@ class Player():
     def xorsum(self, state):
         return reduce(operator.xor, state)
 
+    def pick_random_move(self, state):
+        random_pile_number = random.randint(1, len(state))
+        random_num_stones = random.randint(0, state[random_pile_number-1])
+        while random_num_stones == 0:
+            random_pile_number = random.randint(1, len(state))
+            random_num_stones = random.randint(0, state[random_pile_number-1])
+        return [random_num_stones, random_pile_number]
+
     #finds all winning move first, then return one randomly selected winning move
-    def get_winning_move(self,state): 
+    def get_winning_move(self,state):
           self.update(state)
           total = self.xorsum(self.P)  # xor all elements of P
-          if total==0:
-            print('There is no winning move.')
-            return
+          if total==0: 
+            print("There is no winning move for the computer player.")
+            return self.pick_random_move(self.P)
           pile_index = 0 
 
           non_zero_pile = []
@@ -29,7 +37,8 @@ class Player():
             if i != 0:
               non_zero_pile.append(i)
           if len(non_zero_pile) == 1:
-              return [non_zero_pile[0],self.P.index(non_zero_pile[0])]
+              print(non_zero_pile)
+              return [non_zero_pile[0],self.P.index(non_zero_pile[0])+1]
           #for j in self.P:
           #j is the number of stones in pile
           for j in self.P:

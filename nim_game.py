@@ -14,24 +14,32 @@ def main():
     nim = Nim(init_input_list)
     player = Player(nim.return_state)
 
-    # Check if game is not over
+    # While game is not over
     while not nim.check_end_game():
-        input_string = input("Enter the number of stones you want to take and the pile number you want the stones taken from.\nNote that the pile numbering starts from 1.\nExample: 2 1 - means 2 stones will be taken from the first pile.\n")
+        input_string = input("Enter the number of stones you want to take and the pile number you want the stones taken from.\nNote that the pile numbering starts from 1.\nExample: 2 1 - means 2 stones will be taken from the first pile.\nYour move: ")
 
         # Check if input is valid
         while not input_is_valid(nim, input_string)[0]:
-            input_string = input("Invalid input. Try again.\n")
+            input_string = input("Invalid input. Try again.\nYour move:")
         input_list = input_is_valid(nim,input_string)[1]
         num_stones = input_list[0]
         pile_number = input_list[1]   
         nim.update(num_stones, pile_number)
 
-        # Check if game is not over after human player's turn
-        while not nim.check_end_game():
+        # Check if game is over after human player's turn
+        if nim.check_end_game():
+            print("YOU WIN!")
+            break
+        else:
             # Computer player's turn 
-            player_move = player.get_winning_move(nim.return_state)
+            player_move = player.get_winning_move(nim.return_state())
+            print("Opponent's move:", player_move[0], player_move[1])
             nim.update(player_move[0], player_move[1])
-
+            # Check if game is over after computer player's turn
+            if nim.check_end_game():
+                print("YOU LOSE!")
+                break
+        
 
 def init_input_is_valid(init_input_string):
     init_input_list = convert_input(init_input_string)
