@@ -8,11 +8,15 @@ class Player():
         self.P = P
         self.winning_moves = [] 
 
+    def update(self,state):
+        self.P = state
+
     def xorsum(self, state):
         return reduce(operator.xor, state)
 
     #finds all winning move first, then return one randomly selected winning move
-    def get_winning_move(self): 
+    def get_winning_move(self,state): 
+          self.update(state)
           total = self.xorsum(self.P)  # xor all elements of P
           if total==0:
             print('There is no winning move.')
@@ -47,7 +51,9 @@ class Player():
           #   if j >= tj:
           #     winning_moves.append([j-tj, pile_index])
           #   pile_index += 1 
-          # return winning_moves
+          # return winning_move
+
+
 
 
 
