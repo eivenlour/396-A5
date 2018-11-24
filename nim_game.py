@@ -1,3 +1,6 @@
+# CMPUT 396 Assignment 5 
+# Implements the game of nim
+
 from nim_class import Nim
 from player import Player
 
@@ -14,7 +17,9 @@ def main():
     nim = Nim(init_input_list)
     player = Player(nim.return_state)
 
-    print("Enter the number of stones you want to take and the pile number you want the stones taken from.\nNote that the pile numbering starts from 1.\nExample: 2 1 - means 2 stones will be taken from the first pile.")
+    print("Enter the number of stones you want to take and the pile number you want the stones taken from.\n\
+        Note that the pile numbering starts from 1.\n\
+        Example: 2 1 - means 2 stones will be taken from the first pile.")
 
     # While game is not over
     while not nim.check_end_game():
@@ -42,10 +47,13 @@ def main():
                 print("YOU LOSE!")
                 break
 
+# Check if the initial input is valid
 def init_input_is_valid(init_input_string):
     init_input_list = convert_input(init_input_string)
     converted_list = []
+
     for each_item in init_input_list:
+        # Check is all items are integers
         if not is_integer(each_item):
             return False, None
         # Check if the number of stones in each pile is greater than 0
@@ -55,6 +63,7 @@ def init_input_is_valid(init_input_string):
         
     return True, converted_list
 
+# Check if the input is valid 
 def input_is_valid(nim, input_string):
     current_state = nim.return_state()
     input_list = convert_input(input_string)
@@ -80,6 +89,7 @@ def input_is_valid(nim, input_string):
     
     return True, converted_list
 
+# Convert input string into an input list
 def convert_input(input_string):
     input_string = input_string.split()
     input_list = []
@@ -87,6 +97,7 @@ def convert_input(input_string):
         input_list.append(each_item)
     return input_list
 
+# Check if the character is an integer
 def is_integer(char):
     try:
         int(char)    

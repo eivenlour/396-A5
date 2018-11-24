@@ -1,5 +1,5 @@
-#CMPUT 396 ASSIGNMENT 5 
-#Nim class 
+# CMPUT 396 Assignment 5 
+# Nim class 
 
 class Nim:
 

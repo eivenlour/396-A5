@@ -1,3 +1,6 @@
+# CMPUT 396 Assignment 5 
+# Nim player class
+
 from functools import reduce
 import operator
 import random
@@ -23,6 +26,7 @@ class Player():
         return [random_num_stones, random_pile_number]
 
     # Finds all winning moves, then return one randomly selected winning move
+    # Source: https://webdocs.cs.ualberta.ca/~hayward/396/jem/nim.html
     def get_winning_move(self,state):
         winning_moves = []
         self.update(state)
