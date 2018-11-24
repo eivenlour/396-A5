@@ -26,8 +26,10 @@ class Player():
     def get_winning_move(self,state):
         winning_moves = []
         self.update(state)
+
         # XOR all elements of P
         total = self.xorsum(self.P)  
+        
         # Check if there is no winning move
         if total == 0: 
             return self.pick_random_move(self.P)
