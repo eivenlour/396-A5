@@ -1,4 +1,5 @@
 from Nim import Nim
+from player import Player
 
 def main():
     # Get player input
@@ -8,10 +9,10 @@ def main():
     while not init_input_is_valid(init_input_string)[0]:
         init_input_string = input("Invalid input. Try again.\n")
     init_input_list = init_input_is_valid(init_input_string)[1]
-    print(init_input_list)
 
     # Initialize Nim class
     nim = Nim(init_input_list)
+    player = Player(nim.return_state)
 
     # Check if game is not over
     while not nim.check_end_game():
@@ -24,6 +25,13 @@ def main():
         num_stones = input_list[0]
         pile_number = input_list[1]   
         nim.update(num_stones, pile_number)
+
+        # Check if game is not over after human player's turn
+        while not nim.check_end_game():
+            # Computer player's turn 
+            player_move = player.get_winning_move(nim.return_state)
+            nim.update(player_move[0], player_move[1])
+
 
 def init_input_is_valid(init_input_string):
     init_input_list = convert_input(init_input_string)
