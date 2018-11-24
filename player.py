@@ -37,7 +37,6 @@ class Player():
             if i != 0:
               non_zero_pile.append(i)
           if len(non_zero_pile) == 1:
-              print(non_zero_pile)
               return [non_zero_pile[0],self.P.index(non_zero_pile[0])+1]
           #for j in self.P:
           #j is the number of stones in pile
