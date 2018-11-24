@@ -22,7 +22,7 @@ def main():
 
         # Check if input is valid
         while not input_is_valid(nim, input_string)[0]:
-            input_string = input("Invalid input. Try again.\nYour move:")
+            input_string = input("Invalid input. Try again.\nYour move: ")
         input_list = input_is_valid(nim,input_string)[1]
         num_stones = input_list[0]
         pile_number = input_list[1]   
@@ -76,7 +76,7 @@ def input_is_valid(nim, input_string):
         return False, []
 
     # Check if the number of stones to take in the given pile is less than or equal to the current number of stones in the pile
-    if converted_list[0] > current_state[converted_list[1]-1]:
+    if converted_list[0] > current_state[converted_list[1]-1] or converted_list[0] == 0:
         return False, []
     
     return True, converted_list
