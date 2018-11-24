@@ -1,4 +1,4 @@
-from Nim import Nim
+from nim_class import Nim
 from player import Player
 
 def main():
