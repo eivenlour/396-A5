@@ -14,9 +14,11 @@ def main():
     nim = Nim(init_input_list)
     player = Player(nim.return_state)
 
+    print("Enter the number of stones you want to take and the pile number you want the stones taken from.\nNote that the pile numbering starts from 1.\nExample: 2 1 - means 2 stones will be taken from the first pile.")
+
     # While game is not over
     while not nim.check_end_game():
-        input_string = input("Enter the number of stones you want to take and the pile number you want the stones taken from.\nNote that the pile numbering starts from 1.\nExample: 2 1 - means 2 stones will be taken from the first pile.\nYour move: ")
+        input_string = input("Your move: ")
 
         # Check if input is valid
         while not input_is_valid(nim, input_string)[0]:

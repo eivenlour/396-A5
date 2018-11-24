@@ -27,7 +27,7 @@ class Player():
           self.update(state)
           total = self.xorsum(self.P)  # xor all elements of P
           if total==0: 
-            print("There is no winning move for the computer player.")
+            #print("There is no winning move for the computer player.")
             return self.pick_random_move(self.P)
           pile_index = 0 
 
