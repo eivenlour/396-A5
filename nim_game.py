@@ -20,7 +20,7 @@ def main():
         # Check if input is valid
         while not input_is_valid(nim, input_string)[0]:
             input_string = input("Invalid input. Try again.\n")
-        input_list = convert_input(input_string)
+        input_list = input_is_valid(nim,input_string)[1]
         num_stones = input_list[0]
         pile_number = input_list[1]   
         nim.update(num_stones, pile_number)
@@ -46,20 +46,20 @@ def input_is_valid(nim, input_string):
     # Check if all items are integers
     for each_item in input_list:
         if not is_integer(each_item):
-            return False, None
+            return False, []
         converted_list.append(int(each_item))
     
     # Check if input list has 2 items
     if len(input_list) != 2:
-        return False, None
+        return False, []
 
     # Check if the pile number does not exceed the number of piles
     if converted_list[1] > len(current_state):
-        return False, None
+        return False, []
 
     # Check if the number of stones to take in the given pile is less than or equal to the current number of stones in the pile
     if converted_list[0] > current_state[converted_list[1]-1]:
-        return False, None
+        return False, []
     
     return True, converted_list
 
