@@ -1,10 +1,15 @@
 # CMPUT 396 Assignment 5 
 # Implements the game of nim
 
+import os
 from nim_class import Nim
 from player import Player
 
 def main():
+    
+    # Clear terminal every time the game starts
+    os.system('cls' if os.name == 'nt' else 'clear')
+    
     # Get player input
     init_input_string = input("Enter the list of number of stones you want in each pile, separated by a space character. (Example: 2 3 5)\n")
    
